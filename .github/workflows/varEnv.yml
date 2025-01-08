@@ -1,0 +1,21 @@
+name: Workflow avec Variables d'Environnement
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Définir des variables d'environnement
+        run: |
+          echo "MESSAGE=Déploiement réussi" >> $GITHUB_ENV
+      - name: Afficher la variable MESSAGE
+        run: echo "$MESSAGE"
