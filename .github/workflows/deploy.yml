@@ -3,26 +3,27 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Déclencher le workflow sur la branche main
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js environment
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public  # Remplace ce chemin par le dossier où se trouve ton site généré
+      - name: Set up Git
+        run: |
+          git config user.name "JDomergue91"
+          git config user.email "JDomergue91@users.noreply.github.com"
+      
+      - name: Add files and commit
+        run: |
+          git add --all
+          git commit -m "Deploying to GitHub Pages"
+      
+      - name: Push to GitHub Pages
+        run: |
+          git remote add origin https://github.com/JDomergue91/github-actions.git
+          git push origin main
