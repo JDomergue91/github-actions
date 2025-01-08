@@ -1,0 +1,13 @@
+name: Cron Job Workflow
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+
+jobs:
+  send-message:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Afficher un message dans les logs
+      run: echo "Le workflow s'exécute automatiquement à 8h du matin"
