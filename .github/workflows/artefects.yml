@@ -1,0 +1,26 @@
+name: Téléchargement d'Artéfacts
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    
+    - name: Créer report.txt
+      run: echo "Rapport d'analyse" > report.txt
+
+    
+    - name: Upload report.txt as an artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: rapport-analyse
+        path: report.txt
