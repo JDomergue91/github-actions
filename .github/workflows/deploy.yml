@@ -18,11 +18,6 @@ jobs:
           git config user.name "JDomergue91"
           git config user.email "JDomergue91@users.noreply.github.com"
       
-      - name: Add files and commit
-        run: |
-          git add --all
-          git commit -m "Deploying to GitHub Pages"
-      
       - name: Push to GitHub Pages
         run: |
           git remote add origin https://github.com/JDomergue91/github-actions.git
